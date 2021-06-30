@@ -12,7 +12,11 @@ def pairs_without_rep(points):
 
 
 if __name__ == '__main__':
-    SAMPLES = 10000
-    distances = [dist(i, j) for i, j in pairs_without_rep([(random(), random()) for _ in range(SAMPLES)])]
-    print(f"samples {len(distances)}")
-    print(f"average distance is {sum(distances) / len(distances)}")
+    SAMPLES = 30000
+    distances = (dist(i, j) for i, j in pairs_without_rep([(random(), random()) for _ in range(SAMPLES)]))
+    sm, ln = 0, 0
+    for i in distances:
+        ln += 1
+        sm += i
+    print(f"samples {ln}")
+    print(f"average distance is {sm / ln}")
