@@ -1,10 +1,8 @@
 from random import random
 from statistics import mean
-from itertools import permutations
 
 
-def dist(points):
-    x, y = points
+def dist(x, y):
     return (abs(x[0] - y[0]) ** 2 + abs(x[1] - y[1])) ** (1 / 2)
 
 
@@ -16,6 +14,6 @@ def pairs_without_rep(points):
 
 if __name__ == '__main__':
     SAMPLES = 10000
-    points = ((random(), random()) for _ in range(SAMPLES))
-    distances = map(dist, pairs_without_rep(points))
+    distances = [dist(i, j) for i, j in pairs_without_rep([(random(), random()) for _ in range(SAMPLES)])]
+    print(f"samples {len(distances)}")
     print(f"average distance is {mean(distances)}")
