@@ -16,6 +16,6 @@ def pairs_without_rep(points):
 
 if __name__ == '__main__':
     SAMPLES = 10000
-    points = [(random(), random()) for _ in range(SAMPLES)]
+    points = ((random(), random()) for _ in range(SAMPLES))
     distances = map(dist, pairs_without_rep(points))
     print(f"average distance is {mean(distances)}")
