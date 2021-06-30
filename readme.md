@@ -1,5 +1,24 @@
 ### What is the average distance of randomly distributed points within a square?
 
+#### 2.1.0
+```
+samples 100000000
+average distance is 0.5218091158290441
+python3 simulate.py  96.82s user 0.32s system 99% cpu 1:38.01 total
+```
+
+```
+samples 1000000
+average distance is 0.5183417469858951
+python3 simulate.py  0.97s user 0.01s system 99% cpu 0.980 total
+```
+
+```
+samples 450015000
+average distance is 0.5192975523935922
+python3 simulate.py  424.38s user 0.40s system 99% cpu 7:07.94 total
+```
+
 #### 2.0.1
 ```
 samples 450015000

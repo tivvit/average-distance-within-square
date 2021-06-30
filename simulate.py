@@ -5,18 +5,26 @@ def dist(x, y):
     return ((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2) ** (1 / 2)
 
 
-def pairs_without_rep(points):
-    for i in range(len(points)):
-        for j in range(i, len(points)):
-            yield points[i], points[j]
+def get_point():
+    return random(), random()
+
+
+def pairs_without_rep():
+    points = []
+    while True:
+        p1 = get_point()
+        for p2 in points:
+            yield p1, p2
+        points.append(p1)
 
 
 if __name__ == '__main__':
-    SAMPLES = 30000
-    distances = (dist(i, j) for i, j in pairs_without_rep([(random(), random()) for _ in range(SAMPLES)]))
+    SAMPLES = 10**8
     sm, ln = 0, 0
-    for i in distances:
+    for d in (dist(i, j) for i, j in pairs_without_rep()):
         ln += 1
-        sm += i
+        sm += d
+        if ln == SAMPLES:
+            break
     print(f"samples {ln}")
     print(f"average distance is {sm / ln}")
